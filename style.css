@@ -124,6 +124,15 @@ button:hover {
   border-radius: 4px;
 }
 
+/* Hover scaling: smooth, subtle zoom for gallery images */
+.gallery-item img {
+  transition: transform 280ms ease, box-shadow 280ms ease;
+}
+.gallery-item:hover img {
+  transform: scale(1.04);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
 .gallery-item p {
   margin-top: 10px;
   padding: 5px;
@@ -142,3 +151,103 @@ button:hover {
   font-size: 48px;
   margin-bottom: 20px;
 }
+
+/* Modal styles for image/video details */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 2000;
+}
+.modal-overlay.hidden { display: none; }
+.modal {
+  background: #fff;
+  color: #111;
+  max-width: 1100px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  overflow: auto;
+}
+.modal-close {
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  padding: 10px 14px;
+  cursor: pointer;
+  float: right;
+}
+.modal-body {
+  display: flex;
+  gap: 20px;
+  padding: 18px;
+  align-items: flex-start;
+}
+.modal-media {
+  flex: 1 1 60%;
+  max-height: 70vh;
+  overflow: auto;
+}
+.modal-media img.modal-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.modal-media iframe.modal-iframe {
+  width: 100%;
+  height: 480px;
+  border: 0;
+  border-radius: 4px;
+}
+.modal-details {
+  flex: 1 1 40%;
+  padding: 6px 4px;
+}
+.modal-title { font-size: 20px; margin-bottom: 8px; }
+.modal-date { color: #666; margin-bottom: 12px; }
+.modal-explanation { font-size: 15px; line-height: 1.5; }
+
+@media (max-width: 800px) {
+  .modal-body { flex-direction: column; }
+  .modal-media iframe.modal-iframe { height: 260px; }
+}
+
+/* small play overlay for video thumbnails */
+.video-play-overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+  color: rgba(255,255,255,0.95);
+  pointer-events: none;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+.media-wrap { position: relative; }
+
+.watch-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #0b3d91; /* NASA-like blue */
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.watch-button:hover { background: #092f72; }
+
+.did-you-know {
+  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.did-you-know h3 { margin-bottom: 6px; color: #0b3d91; }
+.did-you-know p { color: #333; font-size: 15px; }
